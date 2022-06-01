@@ -4,10 +4,19 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 const jwt = require("jsonwebtoken");
 const Users = require("../models").users
-
-router.post("/", jsonParser, async (req, res) => {
+const {body,validationResult}=require("express-validator")
+const validate=[
+  body('username').isEmail().withMessage("Enter valid email"),
+  body('password').notEmpty().withMessage('Password not be empty')
+]
+router.post("/", jsonParser,validate, async (req, res) => {
         const password = req.body.password;      
         const email= req.body.username;              
+        const errors=validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()});
+    }
+    else{
         const userDetails = await Users.findOne({ where: { email,password} });
         console.log(userDetails)
           console.log("=================")          
@@ -38,7 +47,7 @@ router.post("/", jsonParser, async (req, res) => {
             res.json({ jwt: token });
           }
         
-        
+        }        
             
   });
 
