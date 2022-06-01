@@ -3,10 +3,15 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 const GoalssDao = require("../dao/goals");
+const {body,validationResult}=require("express-validator");
 
 const jwtUtil = require("../validation/jwt");
 router.use(jwtUtil.checkToken);
 
+const validate=[
+    body('goal').notEmpty().withMessage(`Goal can't be empty`),
+    body('user_id').notEmpty().withMessage(`User id can't be empty`),    
+]
 router.get("/", async (req, res) => {
     try {
       const goals = await GoalssDao.getAllGoals();
@@ -29,7 +34,7 @@ router.get("/", async (req, res) => {
     }
   });
 
-  router.post("/", jsonParser, async (req, res) => {
+  router.post("/", jsonParser,validate, async (req, res) => {
     console.log(req.body);
     try {
       const newGoal = await GoalssDao.createGoals(req.body);
