@@ -8,15 +8,16 @@ Content-Type: application/json
 
 #Create a Employee
 POST  http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
 Content-Type: application/json
 
 {
-      "name": "Vijay",
+      "name": "Rani",
       "age":20,
-      "email": "vijay@gmail.com",
-      "password": "niNe@tWo",
+      "email": "raj@gmail.com",
+      "password": "niE@t3wee",
       "gdo": "GDO4",
-      "mobile":"5647382910",
+      "mobile":"1234567890",
       "role": "Employee"
       
 }
@@ -25,6 +26,7 @@ Content-Type: application/json
 #Create a Admin
 
 POST  http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
 Content-Type: application/json
 
 {
@@ -44,18 +46,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwM
 
 #post goal
 POST  http://localhost:3000/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
 Content-Type: application/json
 
 {
-    "goal": "Develop a lodo game",
+    "goal": "Develop a Game",
     "status": "Inprogress",
-    "date": "2022-04-08",
-    "user_id":7
+    "date": "2022-05-08",
+    "user_id":2
      
 }
 
 #get all users details
 GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
 
 #get all admins
 GET http://localhost:3000/users/admins
