@@ -1,0 +1,96 @@
+#get all users details
+GET http://localhost:3040/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
+
+#get all admins
+GET http://localhost:3040/users/admins
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0VtcGxveWVlIjpmYWxzZSwiaXNBZG1pbiI6ZmFsc2UsImlzU3VwZXJBZG1pbiI6dHJ1ZSwiaWF0IjoxNjU0MDgzOTU3fQ.bVoXruiUgOOyjMB2cCgTmBWkKqxio-rEJR46DBYZ5t8
+
+#get all employee details by gdo like GDO1 GDO2 GDO3 or GDO4
+GET http://localhost:3040/users/employee/GDO1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0VtcGxveWVlIjpmYWxzZSwiaXNBZG1pbiI6dHJ1ZSwiaXNTdXBlckFkbWluIjp0cnVlLCJpYXQiOjE2NTQwODQxMzl9.NhG2pSfo6KDxrJjl8xO96kp-yyMgx9sfQACWGhyyXVw
+
+POST http://localhost:3040/login
+Content-Type: application/json
+
+{
+    "email":"sravani@gmail.com",
+    "password":"password@1234"
+}
+
+#Create a Employee
+POST  http://localhost:3040/register
+Content-Type: application/json
+
+{
+      "name": "Quee",
+      "age":20,
+      "email": "quee@gmail.com",
+      "password": "Pol@to9i",
+      "skills":"java,C,Python",
+      "gdo": "GDO4",
+      "mobile":"1234567890",
+      "role": "Employee"
+      
+}
+
+
+#Create a Admin
+POST  http://localhost:3040/register
+Content-Type: application/json
+
+{
+    "name": "King",
+    "age": 20,
+    "email": "king@gmail.com",
+    "password": "tH2rE1e@two",
+    "skills":"java,C,Python",
+    "mobile":"1234509876",    
+    "gdo": "GDO4",
+    "role":"Admin"
+    
+}
+
+#get all  goals 
+GET http://localhost:3040/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
+
+#post goal
+POST  http://localhost:3040/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
+Content-Type: application/json
+
+{
+    "goal": "Create todo app",
+    "status": "Inprogress",
+    "date": "2022-05-20",
+    "user_id":2
+     
+}
+
+
+#get goal by month and year
+GET http://localhost:3040/goals/byDate/5/2022
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
+
+#get goals by employee id , month and year
+GET http://localhost:3040/goals/userid/4/5/2022
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
+
+PUT http://localhost:3040/goals/editgoal
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0VtcGxveWVlIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaXNTdXBlckFkbWluIjpmYWxzZSwiaWF0IjoxNjU0MTcxNjQxfQ.o_f2h1_DJA45_SN_0hJsmxL7JwKxkoPbWquNDaXZDz4
+Content-Type: application/json
+
+{
+    "id":2,
+    "goal":"Learn React"
+}
+
+PUT http://localhost:3040/goals/editstatus
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0VtcGxveWVlIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaXNTdXBlckFkbWluIjpmYWxzZSwiaWF0IjoxNjU0MTcxNjQxfQ.o_f2h1_DJA45_SN_0hJsmxL7JwKxkoPbWquNDaXZDz4
+Content-Type: application/json
+
+{
+    "id":2,
+    "status":"Inprogress"
+}
