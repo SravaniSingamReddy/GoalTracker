@@ -5,7 +5,6 @@ const Login=(props)=>{
     const [password,setPassword]=useState("");  
     function handleLogin(e){
         e.preventDefault();
-        console.log("heee")
         axios({
             method:'post',
             url:'/login',
