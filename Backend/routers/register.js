@@ -8,9 +8,20 @@ const { body, validationResult } = require("express-validator");
 
 const validate=[
     body('name').isAlpha().withMessage('Name should contain only Alphabets')
-    .notEmpty().withMessage(`Name can't be empty`),
-    body('age').isNumeric().withMessage('Age should be in numbers'),
-    body('email').isEmail().withMessage('Enter valid email id'),
+    .notEmpty().withMessage("Name should not be Empty"),
+    body('age').isNumeric().withMessage('Age should be in numbers')
+    .notEmpty().withMessage("Age should not be empty")    
+    ,
+    body('email')
+    .notEmpty().withMessage("Email should not be empty")
+    .isEmail().withMessage('Enter a valid email id')
+    .custom(async (email)=>{
+      return await Users.findOne({ where: { email } }).then(user=>{
+          if(user){
+              return Promise.reject('Email is in use');
+          }
+      });
+   }),
     body('password').isLength({min:7})
     .withMessage('Password length should be atleast 7')
     .matches(/[a-z]/)
@@ -21,14 +32,16 @@ const validate=[
     .withMessage('Must contain atleast 1 number')
     .matches(/[@$!%*?&]/)
     .withMessage('Must contain atleast one special character')
-    .notEmpty().withMessage(`Password can't be empty`),
-    body('mobile').isNumeric().withMessage('Mobile Number contain only digits')
+    .notEmpty().withMessage("Password should not be empty"),
+    body('mobile')
+    .isNumeric().withMessage('Mobile Number contain only digits')
     .isLength({min:10,max:10}).withMessage('Mobile Number should contain exactly 10 digits'), 
     body('role')
-    .notEmpty().withMessage(`Role can't be empty`),
+    .notEmpty().withMessage("Role should not be empty"),
     body('gdo')
-    .notEmpty().withMessage(`Gdo can't be empty`),
-    
+    .notEmpty().withMessage("Gdo should not be empty"),
+    body('skills')
+        .notEmpty().withMessage("skills should not be empty"),
   ]
   
 router.post("/", jsonParser,validate, async (req, res) => {
