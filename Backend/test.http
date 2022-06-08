@@ -4,7 +4,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwM
 
 #get all admins
 GET http://localhost:3040/users/admins
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0VtcGxveWVlIjpmYWxzZSwiaXNBZG1pbiI6ZmFsc2UsImlzU3VwZXJBZG1pbiI6dHJ1ZSwiaWF0IjoxNjU0MDgzOTU3fQ.bVoXruiUgOOyjMB2cCgTmBWkKqxio-rEJR46DBYZ5t8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0VtcGxveWVlIjp0cnVlLCJpc0FkbWluIjp0cnVlLCJpc1N1cGVyQWRtaW4iOnRydWUsImlhdCI6MTY1NDUxOTc0Nn0.YR07ZSNwp_vmS8iQ_UOOJwUl_MDd01F9MXXD_lzbPOY
 
 #get all employee details by gdo like GDO1 GDO2 GDO3 or GDO4
 GET http://localhost:3040/users/employee/GDO1
@@ -55,16 +55,25 @@ Content-Type: application/json
 GET http://localhost:3040/goals
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
 
+DELETE  http://localhost:3040/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
+Content-Type: application/json
+
+{
+    "id":20
+}
+
 #post goal
+
 POST  http://localhost:3040/goals
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
 Content-Type: application/json
 
 {
-    "goal": "Create todo app",
+    "goal": "Map app",
     "status": "Inprogress",
-    "date": "2022-05-20",
-    "user_id":2
+    "date": "2021-06",
+    "user_id":16
      
 }
 
@@ -75,6 +84,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwM
 
 #get goals by employee id , month and year
 GET http://localhost:3040/goals/userid/4/5/2022
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
+
+GET http://localhost:3040/goals/userid/19/2022-04
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
+
+#get goals based on used id
+GET http://localhost:3040/goals/3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTQwODAwMzF9.Hi7hq0VsS-Ujyl8Mz8xLiiKKecK8AZ5NBc_0P7z_Qgs
 
 PUT http://localhost:3040/goals/editgoal
