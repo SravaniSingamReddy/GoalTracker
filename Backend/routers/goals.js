@@ -3,16 +3,15 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 const GoalssDao = require("../dao/goals");
-const {body,validationResult}=require("express-validator");
-const Goals = require("../models").goals;
-const sequelize=require("sequelize");
+const {body}=require("express-validator");
 const jwtUtil = require("../verifyToken/verify");
 router.use(jwtUtil.checkToken);
 const { Op } = require("sequelize");
 
 const validate=[
-    body('goal').notEmpty().withMessage(`Goal can't be empty`),
-    body('user_id').notEmpty().withMessage(`User id can't be empty`),    
+    body('goal').notEmpty().withMessage("Goal should not be empty"),
+    body('user_id').notEmpty().withMessage("User id should not be empty")
+    .isNumeric().withMessage("user id must be an integer"),    
 ]
 router.get("/", async (req, res) => {
     try {
@@ -35,12 +34,13 @@ router.get("/", async (req, res) => {
       });
     }
   });
-  router.get("/userid/:user_id/:month/:year", async (req, res) => {
+  router.get("/userid/:user_id/:month_year", async (req, res) => {
     console.log(req.params.user_id)    
     const user_id=req.params.user_id;
-    const month=req.params.month;
-    const year=req.params.year;
-    
+    const month_year=req.params.month_year
+    const year=month_year.slice(0,4);
+    const month=month_year.slice(5);
+    console.log(month_year,year,month)
     try {
       const goals = await GoalssDao.getGoalsByEmployeeIdDate(user_id,month,year);
       res.json(goals);
@@ -67,6 +67,7 @@ router.get("/", async (req, res) => {
   });
 
   router.post("/", jsonParser,validate, async (req, res) => {
+    console.log("============addgoal==================")
     console.log(req.body);
     try {
       const newGoal = await GoalssDao.createGoals(req.body);
@@ -85,7 +86,7 @@ router.get("/", async (req, res) => {
     try {
        await GoalssDao.updategoal(req.body);
       res.json({
-        message: `Goal has Updated `,
+        message: "Goal has Updated ",
       });
     } catch (err) {
       res.json({
@@ -99,7 +100,7 @@ router.get("/", async (req, res) => {
     try {
        await GoalssDao.updatestatus(req.body);
       res.json({
-        message: `Goal has Updated`,
+        message: "Goal has Updated",
       });
     } catch (err) {
       res.json({
@@ -107,5 +108,18 @@ router.get("/", async (req, res) => {
       });
     }
   });
+  router.delete("/",jsonParser, async (req, res) => {
+    console.log(req.body.id);    
     
+    try {
+      await GoalssDao.deleteGoal(req.body.id);
+      res.json({
+        message: "goal deleted successfully",
+      });
+    } catch (err) {
+      res.json({
+        error: err.toString(),
+      });
+    }
+  });    
 module.exports = router;
