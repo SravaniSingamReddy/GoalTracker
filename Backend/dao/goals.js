@@ -50,6 +50,10 @@ async function getGoalsByEmployeeIdDate(user_id,month,year){
   return Goals.findAll({where: {[Op.and]:[{user_id},sequelize.fn('EXTRACT(MONTH from "date") =', month),sequelize.fn('EXTRACT(YEAR from "date") =', year)]}})
   
 }
-
-module.exports = {  createGoals,getAllGoals,updategoal,updatestatus,getGoalsByEmployeeId,getGoalsByEmployeeIdDate,getAllGoalsByDate};
+async function deleteGoal(id) {
+  return Goals.destroy({
+    where: { id: id },
+  });
+}
+module.exports = {  createGoals,getAllGoals,updategoal,updatestatus,getGoalsByEmployeeId,getGoalsByEmployeeIdDate,getAllGoalsByDate,deleteGoal};
 
