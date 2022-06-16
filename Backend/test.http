@@ -1,0 +1,99 @@
+POST http://localhost:3090/login
+Content-Type: application/json
+
+{
+    "email":"sravani@gmail.com",
+    "password":"Password@1234"
+}
+
+#get all users details
+GET http://localhost:3090/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+
+#get all admins
+GET http://localhost:3090/users/admins
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+
+GET http://localhost:3090/users/admin/GDO4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+
+#get all employee details by gdo like GDO1 GDO2 GDO3 or GDO4
+GET http://localhost:3090/users/employee/GDO3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+
+#get goals based on used id
+GET http://localhost:3090/goals/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+
+
+#Create a Employee
+POST  http://localhost:3090/register
+Content-Type: application/json
+
+{
+      "name": "Vanaja",
+      "age":20,
+      "email": "vanaja@gmail.com",
+      "password": "Ld@t3EF3",
+      "skills":"Python",
+      "gdo": "GDO1",
+      "mobile":"5432167890",
+      "role": "Super Admin"
+      
+}
+
+#get all  goals 
+GET http://localhost:3090/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+
+#delete goal by goal id
+DELETE  http://localhost:3090/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+Content-Type: application/json
+
+{
+    "id":4
+}
+
+#post goal
+
+POST  http://localhost:3090/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+Content-Type: application/json
+
+{
+    "goal": "View all Employee goals",
+    "status": "Inprogress",
+    "date": "2022-06",
+    "user_id":1
+     
+}
+
+
+#get goal by month and year
+GET http://localhost:3090/goals/byDate/5/2022
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+
+#get goals by employee id , month and year
+GET http://localhost:3090/goals/userid/1/2022-06
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+
+
+
+PUT http://localhost:3090/goals/editgoal
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+Content-Type: application/json
+
+{
+    "id":8,
+    "goal":"Learn React"    
+}
+
+PUT http://localhost:3090/goals/updatestatus
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTUzNzM3Mzd9.fNCcZxCRuZ4EeVarUcMKMH9nXJwuBX2H-QuSUqpOzfg
+Content-Type: application/json
+
+{
+    "id":8,
+    "status":"Completed"
+}
