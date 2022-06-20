@@ -1,0 +1,94 @@
+#Create a New User
+POST  http://localhost:3090/register
+Content-Type: application/json
+
+{
+      "name": "Sravan",
+      "age":20,
+      "email": "sravan@gmail.com",
+      "password": "Ld@t3EF3",
+      "skills":"Python",
+      "gdo_id": 5,
+      "mobile":"5432167890",
+      "role_id":2
+}
+
+#log in user
+POST http://localhost:3090/login
+Content-Type: application/json
+
+{
+    "email":"raj@gmail.com",
+    "password":"Six9@Two"
+}
+
+#Super admin eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsInJvbGUiOiJTdXBlciBBZG1pbiIsImdkbyI6IkFMTCIsImdkb19pZCI6NSwiaWF0IjoxNjU1NDg0NjA4fQ.9B7mt1yfDfEtwzOEElppQfsrNabwuLBNE0xXNaNzt_M 
+#Employee eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJpZCI6Niwicm9sZSI6IkVtcGxveWVlIiwiZ2RvIjoiR0RPMSIsImdkb19pZCI6MSwiaWF0IjoxNjU1NDg0Nzk2fQ.GQYb-rYkhAhSuYkjI0rUd5OPGRKgw5jMSFMmJ9huc0c
+
+#get user details who has loged in
+GET http://localhost:3090/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsInJvbGUiOiJTdXBlciBBZG1pbiIsImdkbyI6IkFMTCIsImdkb19pZCI6NSwiaWF0IjoxNjU1NDg0NjA4fQ.9B7mt1yfDfEtwzOEElppQfsrNabwuLBNE0xXNaNzt_M
+
+#get all admins
+GET http://localhost:3090/users/admins
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsInJvbGUiOiJTdXBlciBBZG1pbiIsImdkbyI6IkFMTCIsImdkb19pZCI6NSwiaWF0IjoxNjU1NDg0NjA4fQ.9B7mt1yfDfEtwzOEElppQfsrNabwuLBNE0xXNaNzt_M
+
+#get admin details by gdo
+GET http://localhost:3090/users/admin/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsInJvbGUiOiJTdXBlciBBZG1pbiIsImdkbyI6IkFMTCIsImdkb19pZCI6NSwiaWF0IjoxNjU1NDg0NjA4fQ.9B7mt1yfDfEtwzOEElppQfsrNabwuLBNE0xXNaNzt_M
+
+#get all employee details by gdo like GDO1 GDO2 GDO3 or GDO4
+GET http://localhost:3090/users/employee/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTY1NTQzMjE3MX0.KXlbGociMA6nLjEPhMSu_4CkMrkUUDv69n_R2beiHRI
+
+#get all goals of users
+GET http://localhost:3090/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJpZCI6Niwicm9sZSI6IkVtcGxveWVlIiwiaWF0IjoxNjU1NDc1NzAzfQ.DCk2IMkJpKZLiR5ax1fXNu58NFgSCDZn95ILtygrJHM
+
+#get goals based on month and year
+GET http://localhost:3090/goals/2022-04
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJpZCI6Niwicm9sZSI6IkVtcGxveWVlIiwiaWF0IjoxNjU1NDc1NzAzfQ.DCk2IMkJpKZLiR5ax1fXNu58NFgSCDZn95ILtygrJHM
+
+#post goal
+POST  http://localhost:3090/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTY1NTQ3MjE0Mn0.IVNezy7vpJDHUG-s-64d0MZJcCW0VBxEM4qORXHRofk
+Content-Type: application/json
+
+{
+    "goal": "View all Employee Goals",
+    "status": "Inprogress",
+    "date": "2022-03"     
+}
+
+#edit goal
+PUT http://localhost:3090/goals/editgoal
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTY1NTQ3MjE0Mn0.IVNezy7vpJDHUG-s-64d0MZJcCW0VBxEM4qORXHRofk
+Content-Type: application/json
+
+{
+    "id":16,
+    "goal":"Learn React"    
+}
+
+#update goal status
+PUT http://localhost:3090/goals/updatestatus
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTY1NTQ3MjE0Mn0.IVNezy7vpJDHUG-s-64d0MZJcCW0VBxEM4qORXHRofk
+Content-Type: application/json
+
+{
+    "id":16,
+    "status":"Inprogress"
+}
+
+#delete goal by goal id
+DELETE  http://localhost:3090/goals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsImlhdCI6MTY1NTQ3MjE0Mn0.IVNezy7vpJDHUG-s-64d0MZJcCW0VBxEM4qORXHRofk
+Content-Type: application/json
+
+{
+    "id":16
+}
+
+GET http://localhost:3090/goals/userid/15/2022-06
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsInJvbGUiOiJTdXBlciBBZG1pbiIsImdkbyI6IkFMTCIsImdkb19pZCI6NSwiaWF0IjoxNjU1NDgxMzc1fQ.5LPDHILkbLinmjvU1FPBxw-GzuGCqVpne2BfBAN3fOM
+

@@ -1,0 +1,34 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Sravani@1234",
+    "database": "goalsdatabase",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "Sravani@1234",
+    "database": "goalsdatabase",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres"
+  },
+  "uat": {
+    "username": "postgres",
+    "password": "Sravani@1234",
+    "database": "goalsdatabase_uat",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "Sravani@1234",
+    "database": "goalsdatabase_prod",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres"
+  }
+}
