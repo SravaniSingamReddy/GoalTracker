@@ -22,8 +22,6 @@ Content-Type: application/json
     "password":"Six9@Two"
 }
 
-#Super admin eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNyYXZhbmlAZ21haWwuY29tIiwiaWQiOjEsInJvbGUiOiJTdXBlciBBZG1pbiIsImdkbyI6IkFMTCIsImdkb19pZCI6NSwiaWF0IjoxNjU1NDg0NjA4fQ.9B7mt1yfDfEtwzOEElppQfsrNabwuLBNE0xXNaNzt_M 
-#Employee eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJpZCI6Niwicm9sZSI6IkVtcGxveWVlIiwiZ2RvIjoiR0RPMSIsImdkb19pZCI6MSwiaWF0IjoxNjU1NDg0Nzk2fQ.GQYb-rYkhAhSuYkjI0rUd5OPGRKgw5jMSFMmJ9huc0c
 
 #get user details who has loged in
 GET http://localhost:3090/users
