@@ -5,7 +5,7 @@ const jsonParser = bodyParser.json();
 const Users = require("../models").users;
 const Roles = require("../models").roles;
 const Gdos = require("../models").gdos;
-const UsersDao = require("../dao/user");
+const UserController = require("../controllers/userController");
 const { body, validationResult } = require("express-validator");
 
 const validate = [
@@ -104,7 +104,7 @@ router.post("/", jsonParser, validate, async (req, res) => {
         }
       }
       if (register) {
-        const newUser = await UsersDao.createUser(req.body);
+        const newUser = await UserController.createUser(req.body);
         res.json({
           message: `Created a new User with User_id ${newUser.id}`,
         });

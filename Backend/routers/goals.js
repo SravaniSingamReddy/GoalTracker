@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
-const GoalssDao = require("../dao/goals");
+const GoalsController = require("../controllers/goalsController");
 const Goals = require("../models").goals;
 const Users = require("../models").users;
 const { body } = require("express-validator");
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
   console.log(req.payload.id)  
   const user_id=req.payload.id  
   try {
-    const goals = await GoalssDao.getGoalsByEmployeeId(user_id);
+    const goals = await GoalsController.getGoalsByEmployeeId(user_id);
     res.json(goals);
   } catch (err) {
     res.json({
@@ -36,7 +36,7 @@ router.get("/:month_year", async (req, res) => {
   console.log(req.payload.id)  
   const user_id=req.payload.id
   try {
-    const goals = await GoalssDao.getGoalsByEmployeeIdDate(user_id,month,year);
+    const goals = await GoalsController.getGoalsByEmployeeIdDate(user_id,month,year);
     res.json(goals);
   } catch (err) {
     res.json({
@@ -70,7 +70,7 @@ router.get("/userid/:user_id/:month_year", async (req, res) => {
   const year = month_year.slice(0, 4);  
   const month = month_year.slice(5);
   try {
-    const goals = await GoalssDao.getGoalsByEmployeeIdDate(user_id,month,year);
+    const goals = await GoalsController.getGoalsByEmployeeIdDate(user_id,month,year);
     res.json(goals);
   } catch (err) {
     res.json({
@@ -92,7 +92,7 @@ router.post("/", jsonParser, validate, async (req, res) => {
   const status=req.body.status;
   const date=req.body.date;  
   try {
-    const newGoal = await GoalssDao.createGoals(goal,user_id,status,date);
+    const newGoal = await GoalsController.createGoals(goal,user_id,status,date);
     res.json({
       message: `Created a new Goal with goal_id ${newGoal.id}`,
     });
@@ -111,7 +111,7 @@ router.put("/editgoal", jsonParser, async (req, res) => {
   console.log(JSON.stringify(goalDetails))
   if(req.payload.id===goalDetails.user_id){    
   try {
-    await GoalssDao.editGoal(req.body);
+    await GoalsController.editGoal(req.body);
     res.json({
       message: "Goal has Edited Successfully",
     });
@@ -135,7 +135,7 @@ router.put("/updatestatus", jsonParser, async (req, res) => {
   console.log(JSON.stringify(goalDetails))
   if(req.payload.id===goalDetails.user_id){      
   try {
-    await GoalssDao.updatestatus(req.body);
+    await GoalsController.updatestatus(req.body);
     res.json({
       message: "Goal has Updated",
     });
@@ -159,7 +159,7 @@ router.delete("/", jsonParser, async (req, res) => {
   console.log(JSON.stringify(goalDetails))
   if(req.payload.id===goalDetails.user_id){      
   try {
-    await GoalssDao.deleteGoal(req.body.id);
+    await GoalsController.deleteGoal(req.body.id);
     res.json({
       message: "goal deleted Successfully",
     });

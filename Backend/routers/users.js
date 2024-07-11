@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const UsersDao = require("../dao/user");
+const UserController = require("../controllers/userController");
 const jwtUtil = require("../verifyToken/verify");
 router.use(jwtUtil.checkToken);
 
 router.get("/", async (req, res) => {
   const user_id=req.payload.id;
   try {
-    const users = await UsersDao.getUserDetails(user_id);
+    const users = await UserController.getUserDetails(user_id);
     res.json(users);
   } catch (err) {
     res.json({
@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 router.get("/a/", async (req, res) => {
   console.log("hello")
   try {
-    const users = await UsersDao.getAllAdminsbyrole();
+    const users = await UserController.getAllAdminsbyrole();
     res.json(users);
   } catch (err) {
     res.json({
@@ -30,7 +30,7 @@ router.get("/a/", async (req, res) => {
 router.get("/admins",  async (req, res) => {
   if(req.payload.role==="Super Admin"){  
   try {
-    const users = await UsersDao.getAllAdmins();
+    const users = await UserController.getAllAdmins();
     res.json(users);
   } catch (err) {
     res.json({
@@ -47,7 +47,7 @@ router.get("/admin/:gdo",  async (req, res) => {
   if(req.payload.role==="Super Admin"){    
   const gdo = req.params.gdo;  
   try {
-    const users = await UsersDao.getAdminByGDO(gdo);
+    const users = await UserController.getAdminByGDO(gdo);
     res.json(users);
   } catch (err) {
     res.json({
@@ -63,7 +63,7 @@ else{
 router.get("/superadmin", async (req, res) => {
   if(req.payload.role==="Super Admin"){
   try {
-    const users = await UsersDao.getSuperAdmin();
+    const users = await UserController.getSuperAdmin();
     res.json(users);
   } catch (err) {
     res.json({
@@ -79,7 +79,7 @@ else{
 router.get("/employee/:gdo",  async (req, res) => {
   const gdo = req.params.gdo;
   try {
-    const users = await UsersDao.getAllEmployeesByGDO(gdo);
+    const users = await UserController.getAllEmployeesByGDO(gdo);
     res.json(users);
   } catch (err) {
     res.json({
