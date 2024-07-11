@@ -13,7 +13,7 @@ This platform helps track the goals of employees for each month under different 
 
 ### Admin
 1. Sign up and log in.
-2. View goals and statuses for any employee for any month under.
+2. View goals and statuses for any employee for any month under particular GDO.
 
 ### Super Admin
 1. Sign up and log in.2. View goals and statuses for any GDO, Admin, or Employee for any month.
