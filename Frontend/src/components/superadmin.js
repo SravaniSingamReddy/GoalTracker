@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import DataTable from "react-data-table-component";
 import { getAdmin,  getAllEmployees } from './apis/usersapi';
 import  {useLocation,useNavigate} from "react-router-dom";
@@ -10,8 +10,8 @@ import Login from './login';
 const SuperAdmin = () => {
   const [admin,setadmin]=useState([]);
   const [employees,setemployees]=useState([]);  
-  const [show,setshow]=useState(false);
-  const [gdo,setGdo]=useState();  
+  const [show,setshow]=useState(true);
+  const [gdo,setGdo]=useState(1);  
   const navigate = useNavigate();    
   const location = useLocation();
   const columnsemp = [
@@ -31,14 +31,16 @@ const SuperAdmin = () => {
       name: "Goals",
       selector: (row) => <Button onClick={() => {
         navigate("/goals",{
-          state: { id:row.user.id,name:location.state.name},
+          state: { id:row.user.id,name:row.user.name},
         })
       }}
       
       type="link" >View Goals</Button>,
     },    
   ];
-    
+    useEffect(()=>{
+      Admins(gdo)
+    },[])
 const Admins= async (gdo)=>{
   console.log("=========")
   const Admin=await getAdmin(gdo);

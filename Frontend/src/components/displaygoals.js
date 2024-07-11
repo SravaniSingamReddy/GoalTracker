@@ -217,10 +217,12 @@ async function getgoals(){
             resetAdd();
           }}
           onOk={() => {
-            addGoal(newgoal,newstatus,location.state.id,Month);
+            const response = addGoal(newgoal,newstatus,location.state.id,Month);
+            if(response){
             getgoals();
             resetAdd();         
-            alert("goal added Successfully")                      
+            alert("goal added Successfully")     
+            }                 
             }}
         >
           <Input  value={newgoal} type="text" placeholder="Enter your goal"  onChange={(e)=>setnewgoal(e.target.value)}/>        

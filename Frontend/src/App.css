@@ -80,6 +80,7 @@ h6{
   align-items: center;
   padding:10px;  
   margin: 5px;
+  margin-top: 20px;;
   margin-bottom: 2px;
 }
 .registerform .register-select{
@@ -152,12 +153,12 @@ h6{
   background: linear-gradient(-135deg, #c850c0, #4158d0);
 }
 .wrapper form{
-  padding: 10px 30px 50px 30px;
+  padding: 10px 30px 20px 30px;
 }
 .wrapper form .field{
   height: 50px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 35px;
   position: relative;
 }
 .wrapper form .field input{
@@ -209,7 +210,7 @@ form .field input[type="submit"]:active{
 }
 form .signup-link{
   color: #262626;
-  margin-top: 20px;
+  margin-top: 8px;
   text-align: center;
   
 }
